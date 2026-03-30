@@ -22,7 +22,7 @@ provider:
     PGHOST: ${env:PGHOST}
     PGDATABASE: ${env:PGDATABASE}
     CURRENT_SCHEMA: ${env:CURRENT_SCHEMA}
-    HTTPS_PROXY_URL: ${env:HTTPS_PROXY_URL}
+    HTTPS_PROXY_URL: ${env:PROXY_URL}
 
   vpc:
     securityGroupIds:
