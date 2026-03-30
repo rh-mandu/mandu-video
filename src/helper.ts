@@ -5,7 +5,7 @@ import {HttpsProxyAgent} from "https-proxy-agent";
 
 
 export async function fetchVideo(uri: string): Promise<any> {
-    const proxyUrl = process.env.PROXY_URL;
+    const proxyUrl = process.env.HTTPS_PROXY_URL;
     const axiosConfig: Record<string, any> = {
         timeout: 15000,
         responseType: "stream",
