@@ -10,18 +10,18 @@ export class S3VideoUploader implements VideoUploader {
     }
 
     async save(data: UploadVideoData): Promise<URL> {
-        console.log("데이터 받아오기 : ",data)
+        console.log("데이터 받아오기 : ",data);
         const dataInfo = await data.toDataInfo();
 
         console.log("s3 save request : ",data)
         const command = new PutObjectCommand({
-            Bucket: "mandu-1",
+            Bucket: process.env.S3_BUCKET,
             Key: data.filePath,
             ContentLength: dataInfo.len,
             Body: dataInfo.data
         });
         await this.s3Client.send(command);
         console.log("s3 save success : ",data)
-        return new URL(data.filePath,"https://mandu-1.s3.ap-northeast-2.amazonaws.com")
+        return new URL(data.filePath,`https://${process.env.S3_BUCKET}.s3.ap-northeast-2.amazonaws.com`)
     }
 }

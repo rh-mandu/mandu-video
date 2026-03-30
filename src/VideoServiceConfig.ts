@@ -2,7 +2,7 @@ import {VideoService} from "./VideoService.ts";
 import {PostgresVideoRepository} from "./PostgresVideoRepository.ts";
 import {createS3VideoUploader} from "./S3VideoUploaderConfig.ts";
 import {VideoFactory} from "./VideoFactory.ts";
-import {createMediaConverterAdapter} from "./MediaConverterAdapterConfig.ts";
+import {createMediaConverterAdapter, createMediaConverterAdapter2} from "./MediaConverterAdapterConfig.ts";
 
 export interface VideoServiceFactory {
     create() : VideoService;
@@ -14,7 +14,7 @@ class DefaultVideoFactory implements VideoServiceFactory {
             new PostgresVideoRepository(),
             createS3VideoUploader(),
             new VideoFactory(),
-            createMediaConverterAdapter()
+            createMediaConverterAdapter2()
         );
     }
 }
